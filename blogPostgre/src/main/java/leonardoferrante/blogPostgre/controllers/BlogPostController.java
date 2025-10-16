@@ -1,6 +1,7 @@
 package leonardoferrante.blogPostgre.controllers;
 
 
+import jakarta.validation.Valid;
 import leonardoferrante.blogPostgre.entities.BlogPost;
 import leonardoferrante.blogPostgre.payload.NewBlogPostPayload;
 import leonardoferrante.blogPostgre.services.BlogPostService;
@@ -26,7 +27,7 @@ public class BlogPostController {
     //chiamata post
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public BlogPost createBlogPost(@RequestBody NewBlogPostPayload body) {
+    public BlogPost createBlogPost(@RequestBody @Valid NewBlogPostPayload body) {
         return this.blogPostService.saveBlogPost(body);
     }
 
